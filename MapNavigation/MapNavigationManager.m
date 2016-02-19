@@ -95,40 +95,6 @@ static MapNavigationManager * MBManager = nil;
 
 - (void)startNavigation:(MapSelect)index
 {
-//    MapNavigationManager * mb = [MapNavigationManager shardMBManager];
-
-    //地址系列
-    //腾讯
-//    NSString * tencentAddressUrl = [[NSString stringWithFormat:@"qqmap://map/routeplan?type=walk&from=%@&to=%@&policy=1&referer=%@",mb.start, mb.end,_appName] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//    //苹果
-//    NSString *appleAddressUrl = [[NSString stringWithFormat:@"http://maps.apple.com/?saddr=%@&daddr=%@&dirflg=w",_start, mb.end] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//    //百度
-//    NSString *baiduAddressUrl = [[NSString stringWithFormat:@"baidumap://map/direction?origin=%@&destination=%@&mode=walking&region=%@&src=%@",mb.start, mb.end,_city,_appName] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//    //高德
-//    NSString *gaodeAddressUrl = [[NSString stringWithFormat:@"iosamap://path?sourceApplication=%@&sid=BGVIS1&sname=%@&did=BGVIS2&dname=%@&dev=0&m=2&t=2",_appName,mb.start,mb.end] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//    //谷歌
-//    NSString *googleAddressUrl = [[NSString stringWithFormat:@"comgooglemaps://?x-source=%@&x-success=%@&saddr=%@&daddr=%@&directionsmode=bicycling",_appName,_urlScheme,mb.start, mb.end] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//    
-//
-//    switch (index) {
-//        case Apple:
-//            urlString = appleAddressUrl;
-//            break;
-//        case Baidu:
-//            urlString = baiduAddressUrl;
-//            break;
-//        case Google:
-//            urlString = googleAddressUrl;
-//            break;
-//        case Gaode:
-//            urlString = gaodeAddressUrl;
-//            break;
-//        case Tencent:
-//            urlString = tencentAddressUrl;
-//            break;
-//        default:
-//            break;
-//    }
     NSString * urlString = [self getUrlStr:index];
     if (urlString != nil) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
@@ -230,20 +196,6 @@ static MapNavigationManager * MBManager = nil;
     return urlString;
 }
 
-- (void)aaa
-{
-    
-   
-    
-    NSString * baiduUrlStr = [[NSString stringWithFormat:@"baidumap://map/direction?origin={{我的位置}}&destination=latlng:%f,%f|name=目的地&mode=driving&coord_type=gcj02",self.Coordinate2D.latitude, self.Coordinate2D.longitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    NSString * goooleUrlStr = [[NSString stringWithFormat:@"comgooglemaps://?x-source=%@&x-success=%@&saddr=&daddr=%f,%f&directionsmode=driving",_appName,_urlScheme,self.Coordinate2D.latitude, self.Coordinate2D.longitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    NSString * gaodeUrlStr= [[NSString stringWithFormat:@"iosamap://navi?sourceApplication=%@&backScheme=%@&lat=%f&lon=%f&dev=0&style=2",_appName,_urlScheme,self.Coordinate2D.latitude, self.Coordinate2D.longitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:baiduUrlStr]];
-}
 
 + (void)showSheetWithCity:(NSString *)city start:(NSString *)start end:(NSString *)end
 {
