@@ -8,8 +8,13 @@
 
 #import "MapNavigationManager.h"
 
+//调用方式
+typedef enum : NSUInteger {
+    Address = 0,
+    Coordinates
+} MapNavStyle;
 
-
+//地图类型
 typedef enum : NSUInteger {
     Apple = 0,
     Baidu,
@@ -23,16 +28,19 @@ static MapNavigationManager * MBManager = nil;
 
 @interface MapNavigationManager ()<UIActionSheetDelegate>
 
-@property (strong, nonatomic) NSString * urlScheme;
-@property (strong, nonatomic) NSString * appName;
+@property (strong, nonatomic) NSString * urlScheme;//当前App返回的url  用于调用地图后返回
+@property (strong, nonatomic) NSString * appName;//当前App名字
 
-@property (strong, nonatomic) NSString * start;
-@property (strong, nonatomic) NSString * end;
-@property (strong, nonatomic) NSString * city;
+@property (assign, nonatomic) MapNavStyle style;//调用方式
 
-@property (assign, nonatomic) MapNavStyle style;
-
+//地名模式
+@property (strong, nonatomic) NSString * start;//起点
+@property (strong, nonatomic) NSString * end;//终点
+@property (strong, nonatomic) NSString * city;//城市名
+//经纬度模式
 @property (assign, nonatomic) CLLocationCoordinate2D Coordinate2D;
+
+
 
 @end
 

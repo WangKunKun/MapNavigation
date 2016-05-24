@@ -10,10 +10,7 @@
 #import <UIKit/UIKit.h>
 @import CoreLocation;
 @import MapKit;
-typedef enum : NSUInteger {
-    Address = 0,
-    Coordinates
-} MapNavStyle;
+
 
 @interface MapNavigationManager : NSObject
 
